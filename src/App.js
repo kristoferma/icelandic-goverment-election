@@ -1,14 +1,24 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import './App.css'
+import 'react-select/dist/react-select.css'
 
 import calculateSeats from './seat-calculation.js'
-import mmr from './mmr-28-09-17.js'
+import surveys from './surveys.js'
 import partyColor from './party-colors.js'
 
 import { VictoryPie } from 'victory'
+import Select from 'react-select'
 
 const FlexContainer = styled.div`display: flex;`
+
+const SurveyDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`
+
+const SeatDiv = SurveyDiv
 
 function formatSurveyData(data) {
   return data.map(({ letter, percentage }) => ({
@@ -19,6 +29,7 @@ function formatSurveyData(data) {
 }
 
 function formatData(data) {
+  console.log(data)
   return Object.keys(data)
     .map(partyLetter => ({
       x: partyLetter,
@@ -29,6 +40,15 @@ function formatData(data) {
 }
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { survey: surveys[0] }
+  }
+
+  onSurveyChange(data) {
+    this.setState({ survey: data })
+  }
+
   render() {
     return (
       <div className="App">
@@ -41,8 +61,21 @@ class App extends Component {
           <h1 className="App-title">Kosninga leikvöllur</h1>
         </header>
         <FlexContainer>
-          <VictoryPie data={formatSurveyData(mmr)} />
-          <VictoryPie data={formatData(calculateSeats(mmr))} />
+          <SurveyDiv>
+            <h2>Dreifing atkvæða</h2>
+            <Select
+              options={surveys}
+              value={this.state.survey}
+              onChange={this.onSurveyChange.bind(this)}
+            />
+            <VictoryPie data={formatSurveyData(this.state.survey.value)} />
+          </SurveyDiv>
+          <SeatDiv>
+            <h2>Dreifing þingsæta</h2>
+            <VictoryPie
+              data={formatData(calculateSeats(this.state.survey.value))}
+            />
+          </SeatDiv>
         </FlexContainer>
       </div>
     )
