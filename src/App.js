@@ -32,7 +32,7 @@ function formatSurveyData(data) {
 function formatData(data) {
   return Object.keys(data)
     .map(partyLetter => ({
-      x: partyLetter,
+      x: `${partyLetter}:${data[partyLetter].seats}`,
       y: data[partyLetter].seats,
       fill: partyColor(partyLetter)
     }))
@@ -64,6 +64,9 @@ class App extends Component {
           <SurveyDiv>
             <h2>Dreifing atkvæða</h2>
             <Select
+              name="survey"
+              searchable={false}
+              clearable={false}
               options={surveys}
               value={this.state.survey}
               onChange={this.onSurveyChange.bind(this)}

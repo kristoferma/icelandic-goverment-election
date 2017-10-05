@@ -30,5 +30,21 @@ module.exports = [
       { letter: 'T', name: 'Dögun', percentage: 0.6 }
       /*{ letter: 'Other', percentage: 1.4 }*/
     ]
+  },
+  {
+    label: 'Test',
+    value: [
+      { letter: 'V', name: 'Vinstri Grænir', percentage: 10.9 },
+      { letter: 'D', name: 'Sjálfstæðisflokkurinn', percentage: 9.9 },
+      { letter: 'S', name: 'Samfylkingin', percentage: 9.9 },
+      { letter: 'P', name: 'Píratar', percentage: 9.9 },
+      { letter: 'F', name: 'Flokkur fólksins', percentage: 9.9 },
+      { letter: 'M', name: 'Miðflokkurinn', percentage: 9.9 },
+      { letter: 'B', name: 'Framsóknarflokkurinn', percentage: 9.9 },
+      { letter: 'C', name: 'Viðreisn', percentage: 9.9 },
+      { letter: 'A', name: 'Björt Framtíð', percentage: 9.9 },
+      { letter: 'T', name: 'Dögun', percentage: 9.9 }
+      /*{ letter: 'Other', percentage: 1.4 }*/
+    ]
   }
 ]
