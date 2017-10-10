@@ -1,37 +1,32 @@
 const tsv = require("node-tsv-json");
 const fs = require('fs');
 
-function nameToLetter(name) {
-  switch (name) {
-    case 'Vinstri-græn':
-      return 'V'
-    case 'Sjálfstæðisflokkurinn':
-      return 'D'
-    case 'Samfylkingin':
-      return 'S'
-    case 'Píratar':
-      return 'P'
-    case 'Flokkur fólksins':
-      return 'F'
-    case 'Miðflokkurinn':
-      return 'M'
-    case 'Framsóknarflokkurinn':
-      return 'B'
-    case 'Viðreisn':
-      return 'C'
-    case 'Björt framtíð':
-      return 'A'
-    case 'Dögun':
-      return 'T'
-    case 'Íslenska þjóðfylkingin':
-      return 'E'
-    case 'Annað':
-      return 'Oth'
-    default:
-      return name 
-  }
+const nameToLetter = {
+    Björt_framtíð: 'A',
+    Framsóknarflokkurinn: 'B',
+    Viðreisn: 'C',
+    Sjálfstæðisflokkurinn: 'D',
+    Íslenska_þjóðfylkingin: 'E',
+    Flokkur_fólksins: 'F',
+    Hægri_grænir: 'G',
+    Húmanistaflokkurinn: 'H',
+    Flokkur_heimilana: 'I',
+    Regnboginn: 'J',
+    Sturla_Jónsson: 'K',
+    Lýðræðisvaktin: 'L',
+    Miðflokkurinn: 'M',
+    Borgarahreyfingin: 'O',
+    Píratar: 'P',
+    Alþýðufylkingin: 'R',
+    Samfylkingin: 'S',
+    Dögun: 'T',
+    Vinstri_græn: 'V',
+    Samstaða: 'C',
+    Frjálslyndi_flokkurinn: 'F',
+    Landsbyggðarflokkurinn: 'M',
+    Annað: 'Oth',
+};
 
-}
 // Returns a promise that resolves in the data.
 
 // TODO. just save the surveys to disk so 
@@ -56,18 +51,15 @@ function getData() {
             value: [],
           }
           for (let j = 1; j < flokkar.length; j++) {
-            let precentage = row[j].replace(',', '.')
-            if (precentage === '') {
-              precentage = 0
-            } else {
-              precentage = parseFloat(precentage)
+            if (row[j]!== '') {
+              let precentage = row[j].replace(',', '.')
+              precentage = parseFloat(precentage).toFixed(2)
+              survey.value.push({
+                letter: nameToLetter[flokkar[j].replace(' ', '_').replace('-', '_')],
+                name: flokkar[j],
+                precentage,
+              })
             }
-
-            survey.value.push({
-              letter: nameToLetter(flokkar[j]),
-              name: flokkar[j],
-              precentage,
-            })
           }
           surveys.push(survey)
         }

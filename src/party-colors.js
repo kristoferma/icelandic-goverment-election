@@ -1,14 +1,24 @@
 const colors = {
-  V: '#336633',
-  D: '#00aeef',
-  S: '#b9272c',
-  P: '#51297e',
-  F: '#ee4d9b',
-  B: '#99cc66',
-  M: 'rgb(0,58,123)',
-  C: '#f6a71d',
   A: '#931e7f',
-  T: '#b49d31'
+  B: '#99cc66',
+  C: '#f6a71d',
+  D: '#00aeef',
+  E: '#26286f',
+  F: '#ee4d9b',
+  G: '#316736',
+  H: '#fc551c',
+  I: '#fdfbfa',
+  J: '#f3ff6d',
+  K: '#fccbba',
+  L: '#376697',
+  M: 'rgb(0,58,123)',
+  O: '#f59153',
+  P: '#51297e',
+  R: '#a10d1e',
+  S: '#b9272c',
+  T: '#b49d31',
+  V: '#448f46',
+  Oth: '#008b80',
 }
 
 export default function(partyLetter) {

@@ -20,7 +20,6 @@ const SurveyDiv = styled.div`
 `
 
 const SeatDiv = SurveyDiv
-//const surveys = JSON.parse(surveysJSON)
 
 function formatSurveyData(data) {
   return data.map(({ letter, percentage }) => ({
@@ -43,7 +42,6 @@ function formatData(data) {
 class App extends Component {
   constructor(props) {
     super(props)
-    console.log(surveys[0]);
     this.state = { survey: surveys[0] }
   }
 
