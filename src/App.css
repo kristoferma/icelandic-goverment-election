@@ -3,8 +3,11 @@
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  /* 
+  Because this is super annoying 😂
+  animation: App-logo-spin infinite 20s linear; 
+  */
+  height: 90px;
 }
 
 .App-header {

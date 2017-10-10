@@ -10,6 +10,7 @@ import partyColor from './party-colors.js'
 import { VictoryPie } from 'victory'
 import Select from 'react-select'
 
+
 const FlexContainer = styled.div`display: flex;`
 
 const SurveyDiv = styled.div`
@@ -29,7 +30,6 @@ function formatSurveyData(data) {
 }
 
 function formatData(data) {
-  console.log(data)
   return Object.keys(data)
     .map(partyLetter => ({
       x: partyLetter,
