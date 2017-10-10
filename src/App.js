@@ -4,7 +4,7 @@ import './App.css'
 import 'react-select/dist/react-select.css'
 
 import calculateSeats from './seat-calculation.js'
-import surveys from './surveys.js'
+import surveys from './surveyDataCollection/fylgi.json'
 import partyColor from './party-colors.js'
 
 import { VictoryPie } from 'victory'
@@ -20,6 +20,7 @@ const SurveyDiv = styled.div`
 `
 
 const SeatDiv = SurveyDiv
+//const surveys = JSON.parse(surveysJSON)
 
 function formatSurveyData(data) {
   return data.map(({ letter, percentage }) => ({
@@ -42,6 +43,7 @@ function formatData(data) {
 class App extends Component {
   constructor(props) {
     super(props)
+    console.log(surveys[0]);
     this.state = { survey: surveys[0] }
   }
 
