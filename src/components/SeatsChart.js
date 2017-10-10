@@ -121,6 +121,7 @@ export default class extends Component {
         <h2>Dreifing þingsæta</h2>
         <PieChart width={730} height={500}>
           <Pie
+            value={data01}
             data={data01}
             cx="50%"
             cy="50%"

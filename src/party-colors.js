@@ -18,7 +18,7 @@ const colors = {
   S: '#b9272c',
   T: '#b49d31',
   V: '#448f46',
-  Oth: '#008b80',
+  Oth: '#008b80'
 }
 
 export default function(partyLetter) {
