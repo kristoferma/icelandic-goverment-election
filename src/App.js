@@ -10,6 +10,7 @@ import partyColor from './party-colors.js'
 import { VictoryPie } from 'victory'
 import Select from 'react-select'
 
+import SeatsChart from './components/SeatsChart'
 
 const FlexContainer = styled.div`display: flex;`
 
@@ -19,10 +20,9 @@ const SurveyDiv = styled.div`
   width: 100%;
 `
 
-const SeatDiv = SurveyDiv
-
 function formatSurveyData(data) {
   return data.map(({ letter, percentage }) => ({
+    name: letter,
     x: letter,
     y: percentage * 10,
     fill: partyColor(letter)
@@ -32,6 +32,8 @@ function formatSurveyData(data) {
 function formatData(data) {
   return Object.keys(data)
     .map(partyLetter => ({
+      name: partyLetter,
+      isInMajority: false,
       x: `${partyLetter}:${data[partyLetter].seats}`,
       y: data[partyLetter].seats,
       fill: partyColor(partyLetter)
@@ -73,12 +75,9 @@ class App extends Component {
             />
             <VictoryPie data={formatSurveyData(this.state.survey.value)} />
           </SurveyDiv>
-          <SeatDiv>
-            <h2>Dreifing þingsæta</h2>
-            <VictoryPie
-              data={formatData(calculateSeats(this.state.survey.value))}
-            />
-          </SeatDiv>
+          <SeatsChart
+            data={formatData(calculateSeats(this.state.survey.value))}
+          />
         </FlexContainer>
       </div>
     )
