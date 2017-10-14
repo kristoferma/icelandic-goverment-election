@@ -1,4 +1,5 @@
 .App {
+  font-family: "Times New Roman", Times, serif;
   text-align: center;
 }
 
@@ -19,10 +20,6 @@
 
 .App-title {
   font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
 }
 
 @keyframes App-logo-spin {

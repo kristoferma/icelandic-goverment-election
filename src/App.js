@@ -20,6 +20,14 @@ const SurveyDiv = styled.div`
   width: 100%;
 `
 
+const BoarderDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: white;
+  background-color: #2d5382;
+`
+
 function formatSurveyData(data) {
   return data.map(({ letter, percentage }) => ({
     name: letter,
@@ -36,7 +44,7 @@ function formatData(data) {
       isInMajority: false,
       x: `${partyLetter}:${data[partyLetter].seats}`,
       y: data[partyLetter].seats,
-      fill: partyColor(partyLetter)
+      fill: data[partyLetter].color,
     }))
     .filter(data => data.y > 0)
 }
@@ -60,7 +68,9 @@ class App extends Component {
             className="App-logo"
             alt="logo"
           />
-          <h1 className="App-title">Kosninga leikvöllur</h1>
+          <BoarderDiv>
+            <h1 className="App-title">Kosninga leikvöllur</h1>
+          </BoarderDiv>
         </header>
         <FlexContainer>
           <SurveyDiv>

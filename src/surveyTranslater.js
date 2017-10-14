@@ -1,6 +1,28 @@
 const tsv = require('node-tsv-json')
 const fs = require('fs')
 
+const letterToColor = {
+  A: '#931e7f',
+  B: '#99cc66',
+  C: '#f6a71d',
+  D: '#00aeef',
+  E: '#26286f',
+  F: '#ee4d9b',
+  G: '#316736',
+  H: '#fc551c',
+  I: '#fdfbfa',
+  J: '#f3ff6d',
+  K: '#fccbba',
+  L: '#376697',
+  M: 'rgb(0,58,123)',
+  O: '#f59153',
+  P: '#51297e',
+  R: '#a10d1e',
+  S: '#b9272c',
+  T: '#b49d31',
+  V: '#448f46',
+  Oth: '#008b80'
+}
 const nameToLetter = {
   Björt_framtíð: 'A',
   Framsóknarflokkurinn: 'B',
@@ -52,13 +74,15 @@ function getData() {
           }
           for (let j = 1; j < flokkar.length; j++) {
             if (row[j] !== '') {
-              let precentage = row[j].replace(',', '.')
-              precentage = parseFloat(precentage).toFixed(2)
+              let percentage = row[j].replace(',', '.')
+              percentage = parseFloat(percentage).toFixed(2)
+              const letter = nameToLetter[flokkar[j].replace(' ', '_').replace('-', '_')] 
+              const color = letterToColor[letter]
               survey.value.push({
-                letter:
-                  nameToLetter[flokkar[j].replace(' ', '_').replace('-', '_')],
+                letter,
                 name: flokkar[j],
-                precentage
+                percentage,
+                color,
               })
             }
           }
@@ -75,7 +99,6 @@ function getData() {
             console.log('The file was saved!')
           }
         )
-
         res(surveys)
       }
     })

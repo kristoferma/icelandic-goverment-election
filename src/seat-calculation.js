@@ -40,8 +40,14 @@ export default function(survey) {
 
   const finalResult = parties
   equalizingSeats.forEach(
-    ({ letter, denomination }) => finalResult[letter].seats++
+    ({ letter, denomination }) => {
+      finalResult[letter].seats++
+    }
   )
+
+  survey.forEach((party) => {
+    finalResult[party.letter].color = party.color
+  })
 
   return finalResult
 }
